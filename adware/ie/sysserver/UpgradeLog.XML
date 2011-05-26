@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Adware">
+</Property><Property Name="Solution File" Value="C:\Documents and Settings\feydr\Desktop\nadplugin\AdPLUGIN\Source code\Adware\Adware.sln">
+</Property><Property Name="User Options File" Value="C:\Documents and Settings\feydr\Desktop\nadplugin\AdPLUGIN\Source code\Adware\Adware.suo">
+</Property><Property Name="Date" Value="Monday, August 09, 2010">
+</Property><Property Name="Time" Value="11:21 AM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Adware.sln" Description="File successfully backed up as C:\Documents and Settings\feydr\Desktop\nadplugin\AdPLUGIN\Source code\Adware\Adware.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="Adware.suo" Description="File successfully backed up as C:\Documents and Settings\feydr\Desktop\nadplugin\AdPLUGIN\Source code\Adware\Adware.suo.old">
+</Event><Event ErrorLevel="0" Project="Adware" Source="Adware\Adware.vcproj" Description="Converting project file 'C:\Documents and Settings\feydr\Desktop\nadplugin\AdPLUGIN\Source code\Adware\Adware\Adware.vcproj'.">
+</Event><Event ErrorLevel="1" Project="Adware" Source="Adware\Adware.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="Adware" Source="Adware\Adware.vcproj" Description="Done converting to new project file 'C:\Documents and Settings\feydr\Desktop\nadplugin\AdPLUGIN\Source code\Adware\Adware\Adware.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="Adware" Source="Adware\Adware.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="AdwarePS" Source="Adware\AdwarePS.vcproj" Description="Converting project file 'C:\Documents and Settings\feydr\Desktop\nadplugin\AdPLUGIN\Source code\Adware\Adware\AdwarePS.vcproj'.">
+</Event><Event ErrorLevel="1" Project="AdwarePS" Source="Adware\AdwarePS.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="AdwarePS" Source="Adware\AdwarePS.vcproj" Description="Done converting to new project file 'C:\Documents and Settings\feydr\Desktop\nadplugin\AdPLUGIN\Source code\Adware\Adware\AdwarePS.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="AdwarePS" Source="Adware\AdwarePS.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Adware.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Adware.sln" Description="Converted">
+</Event></UpgradeLog>

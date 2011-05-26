@@ -1,0 +1,16 @@
+%table{ :style => "margin: 50px;" }
+  %tr
+    %th
+    %th
+  - icount = 0
+  - @dlls.each do |dll|
+    - icount += 1
+    - if (icount%2).eql? 0 then
+      - rowstyle = 'arow'
+    - else
+      - rowstyle = 'brow'
+    %tr{ :class => rowstyle, :style => 'font-weight: bold',
+       :onmouseover => "this.className = 'mouseon'",
+       :onmouseout => "this.className = '#{rowstyle}'"}
+      %td
+      %td

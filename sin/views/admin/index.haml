@@ -1,0 +1,119 @@
+.lcolumn
+  .nblock
+    %a{ :href => "/admin/users" }
+      = User.count
+      total users.
+    %br
+    %a{ :href => "/admin/affiliates" }
+      = Affiliate.count
+      total affiliates.
+    %br
+    %a{ :href => "/admin/advertisers" }
+      = Advertiser.count
+      total advertisers.
+    %br
+    %hr
+    %br
+    %a{ :href => "/admin/hosts" }
+      = Host.count
+      total hosts.
+    %br
+    = Campaign.count
+    total campaigns
+    %br
+    = Url.count
+    total urls.
+    %br
+    = Keyword.count
+    total keywords.
+    %br
+    %a{ :href => "/admin/downloads" }
+      = Download.count
+      total downloads.
+    %br
+    %a{ :href => "/admin/clicks" }
+      = Click.count
+      total clicks.
+    %br
+    %a{ :href => "/admin/impressions" }
+      = Impression.count
+      total impressions.
+    %br
+    %hr
+    %br
+    %a{ :href => "/admin/invoices" }
+      = Invoice.count
+      total invoices.
+    %br
+    %a{ :href => "/admin/credits" }
+      = Credit.count
+      total credits.
+    %br
+    %a{ :href => "/admin/payments" }
+      = Payment.count
+      total payments.
+
+.lcolumn
+  %script{ :type => 'text/javascript', :src => 'http://www.google.com/jsapi' }
+  :javascript
+    google.load('visualization', '1', {'packages': ['geomap']});
+    google.setOnLoadCallback(drawMap);
+
+    function drawMap() {
+      var data = new google.visualization.DataTable();
+      data.addRows(6);
+      data.addColumn('string', 'Country');
+      data.addColumn('number', 'Popularity');
+      data.setValue(0, 0, 'Germany');
+      data.setValue(0, 1, 200);
+      data.setValue(1, 0, 'United States');
+      data.setValue(1, 1, 300);
+      data.setValue(2, 0, 'Brazil');
+      data.setValue(2, 1, 400);
+      data.setValue(3, 0, 'Canada');
+      data.setValue(3, 1, 500);
+      data.setValue(4, 0, 'France');
+      data.setValue(4, 1, 600);
+      data.setValue(5, 0, 'RU');
+      data.setValue(5, 1, 700);
+
+      var options = {};
+      options['dataMode'] = 'regions';
+
+      var container = document.getElementById('map_canvas');
+      var geomap = new google.visualization.GeoMap(container);
+      geomap.draw(data, options);
+    };
+
+  #map_canvas
+
+.nblock
+  :javascript
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Month');
+      data.addColumn('number', 'Downloads');
+      data.addColumn('number', 'Advertisers');
+      data.addRows([
+        ['2004', 1000, 400],
+        ['2005', 1170, 460],
+        ['2006', 660, 1120],
+        ['2007', 1030, 540]
+      ]);
+
+      var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+      chart.draw(data, {width: 400, height: 240, title: 'Company Performance',
+                        hAxis: {title: 'Year', titleTextStyle: {color: '#FF0000'}}
+                       });
+    }
+
+  #chart_div
+
+.nblock
+  %a{ :href => "/admin/software" }
+    Manage Software
+  %br
+  %a{ :href => "/admin/dlls" }
+    Manage Dll Versions

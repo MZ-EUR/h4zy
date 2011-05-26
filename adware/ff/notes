@@ -1,0 +1,13 @@
+firefox extension cookie handling notes:
+
+  https://developer.mozilla.org/en/Code_snippets/Cookies
+
+just so you don't go crazy:
+
+  ctrl-R does NOT issue new requests,
+you must do a ctrl-shift-refresh or goto a diff. webpage
+
+https://developer.mozilla.org/En/Code_snippets/On_page_load
+
+to edit:
+  vim chrome/content/overlay.js

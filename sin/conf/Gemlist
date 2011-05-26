@@ -1,0 +1,8 @@
+haml
+sinatra
+ruby-debugger
+geokit
+aws-s3
+uaid    || user-agent
+RMagick
+  -- requires apt of libmagickX-dev

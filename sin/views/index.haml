@@ -1,0 +1,17 @@
+%span{ :style => "float: right;" }
+  %a{ :href => "/newaccount" }
+    Create Account
+%center
+  %img{ :src => "/images/header.png", :style => "margin-top: 100px;" }
+%center
+  .cblock
+    %form{ :method => "post", :action => "/auth", :style => "margin-top: 20px;" }
+      %b
+        login:
+      %input{ :name => "login", :type => "text" }
+      %br
+      %b
+        password:
+      %input{ :name => "password", :type => "password" }
+      %br
+      %input{ :type => "submit", :value => "go" }

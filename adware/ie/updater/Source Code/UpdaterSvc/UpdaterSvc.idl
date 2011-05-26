@@ -1,0 +1,20 @@
+// UpdaterSvc.idl : IDL source for UpdaterSvc.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (UpdaterSvc.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(E96582A0-2085-46E3-ABAF-8F8171391F45),
+	version(1.0),
+	helpstring("UpdaterSvc 1.0 Type Library")
+]
+library UPDATERSVCLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+};

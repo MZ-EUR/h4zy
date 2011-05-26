@@ -1,0 +1,77 @@
+%center
+  %h2
+    welcome to the advertising section!
+%br
+You have
+= @totalcamps
+campaigns!
+|
+Your current balance is
+= prettymoney(current_user.balance)
+\.
+%br
+
+%table{ :style => "margin: 50px;" }
+  %tr
+    %th
+      Campaign
+    %th
+      Type
+    %th
+      Budget
+    %th
+      Status
+    %th
+      Clicks
+    %th
+      Impressions
+    %th
+      CTR
+    %th
+      Avg. CPC
+    %th
+      Cost
+  - icount = 0
+  - @campaigns.each do |camp|
+    - icount += 1
+    - if (icount%2).eql? 0 then
+      - rowstyle = 'arow'
+    - else
+      - rowstyle = 'brow'
+    %tr{ :class => rowstyle, :style => 'font-weight: bold',
+         :onmouseover => "this.className = 'mouseon'",
+         :onmouseout => "this.className = '#{rowstyle}'"}
+      %td
+        %a{ :href => "/campaigns/show/#{camp.id}" }
+          = camp.title
+      %td
+        = camp.adtype.title
+      %td
+        = prettymoney(camp.budget)
+      %td
+        = camp.status
+      %td
+        = camp.ads.clicks.count
+      %td
+        = camp.ads.impressions.count
+      %td
+        - if camp.ads.impressions.count > 0 then
+          = '%.2f' % ((camp.ads.clicks.count/camp.ads.impressions.count.to_f)*100).to_s
+      %td
+      %td
+
+.nblock
+  %b
+    Create New Campaign
+  %br
+  %form{ :action => "/campaigns/create", :method => "post" }
+    Choose your Ad Vector:
+    %select{ :name => 'adtype' }
+      - Adtype.all.each do |at|
+        %option{ :value => "#{at.id}"}
+          = at.title
+    %br
+    Name:
+    %input{ :type => 'text', :name => 'title' }
+    %br
+    %input{ :type => 'submit', :value => 'create' }

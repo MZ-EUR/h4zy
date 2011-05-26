@@ -1,0 +1,13 @@
+%a{ :href => "/affiliates/index" }
+  Affiliate
+|
+- if current_user.admin? then
+  %a{ :href => "/admin" }
+    Admin
+  |
+%a{ :href => "/advertisers/index" }
+  Advertisers
+%span{ :style => "float:right;" }
+  %a{ :href => "/logout"}
+    Logout
+%br

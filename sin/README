@@ -1,0 +1,6 @@
+use shotgun for development
+
+
+to debug insert the following lines at breakpoint:
+  require 'ruby-debug'
+  debugger

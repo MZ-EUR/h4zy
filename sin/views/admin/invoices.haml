@@ -1,0 +1,30 @@
+- if @invoices.count.eql? 0 then
+  %center
+    %h2
+      No Invoices!?!?? You better get cracking son!
+- else
+
+  %table{ :style => "margin: 50px;" }
+    %tr
+      %th
+        User
+      %th
+        Amount
+      %th
+        Paid At
+    - icount = 0
+    - @invoices.each do |invoice|
+      - icount += 1
+      - if (icount%2).eql? 0 then
+        - rowstyle = 'arow'
+      - else
+        - rowstyle = 'brow'
+      %tr{ :class => rowstyle, :style => 'font-weight: bold',
+        :onmouseover => "this.className = 'mouseon'",
+        :onmouseout => "this.className = '#{rowstyle}'"}
+        %td
+          = invoice.user.login
+        %td
+          = prettymoney(invoice.amount)
+        %td
+          = invoice.paid_at.strftime("%D")

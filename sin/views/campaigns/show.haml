@@ -1,0 +1,66 @@
+%center
+  %h2
+    = @campaign.title
+
+%a.buttonselect{ :href => "/ads/new/#{@campaign.id}" }
+  Create a New Ad
+%br
+%br
+Ads:
+%table{ :style => "margin: 50px;" }
+  %tr
+    %th
+    %th
+      Clicks
+    %th
+      Impressions
+    %th
+      CTR
+    %th
+      Title
+    %th
+      Description
+    %th
+      Link
+    %td
+  - icount = 0
+  - @ads.each do |ad|
+    - icount += 1
+    - if (icount%2).eql? 0 then
+      - rowstyle = 'arow'
+    - else
+      - rowstyle = 'brow'
+    %tr{ :class => rowstyle, :style => 'font-weight: bold',
+         :onmouseover => "this.className = 'mouseon'",
+         :onmouseout => "this.className = '#{rowstyle}'"}
+      %td
+        %a{ :href => "/ads/destroy/#{ad.id}" }
+          X
+      %td
+        = ad.clicks.count
+      %td
+        = ad.impressions.count
+      %td
+        - if ad.impressions.count > 0 then
+          = '%.2f' % ((ad.clicks.count/ad.impressions.count.to_f)*100).to_s
+      %td
+        = ad.title
+      %td
+        = ad.content
+      %td
+        = ad.link
+      - if !ad.pic.nil? && !ad.pic.empty? then
+        %td
+          %img{ :src => "#{ad.img} " }
+      - else
+        %td
+
+- if @campaign.adtype.title.eql? "URL" then
+  URLS
+  %br
+  = haml(:"campaigns/urls", :layout => false)
+
+- if @campaign.adtype.title.eql? "Keyword" then
+  Keywords
+  %br
+  = haml(:"campaigns/keywords", :layout => false)

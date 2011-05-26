@@ -1,0 +1,10 @@
+:javascript
+  function delayer(){
+    window.location = "/";
+  }
+
+%body{ :onload => "setTimeout('delayer()', 5000)" }
+
+%center
+  %h2
+    404!

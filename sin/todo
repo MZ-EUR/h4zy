@@ -1,0 +1,7 @@
+http://ads.h4zy.info/ppc.php?GetAds=1&URLDomain=%20www.wikipedia.org&PageURL=http://www.wikipedia.org/
+
+Callback({"Response":[{"PopupDomain":[{"Description":"ad 1 txt","Link":"www.ad1.com"},{"Description":"ad 2 txt","Link":"www.ad2.com"},{"Description":"ad 3 txt","Link":"www.ad3.com"}]}]})
+
+http://ads.h4zy.info/ppc.php?GetAd=1&URLDomain=%20www.wikipedia.org&PageURL=http://www.wikipedia.org/
+
+Callback({"Response":[{"PopupDomain":[{"Description":"click this link right now motherfucker!","Link":"http:\/\/cakepoker.com"}]}]})

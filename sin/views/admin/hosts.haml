@@ -1,0 +1,46 @@
+- if @hosts.count.eql? 0 then
+  %center
+    %h2
+      No Hosts!?!?? You better get cracking son!
+- else
+
+  %table{ :style => "margin: 50px;" }
+    %tr
+      %th
+        Latest IP
+      %th
+        Clicks
+      %th
+        Impressions
+      %th
+        Operating System
+      %th
+        Browser
+      %th
+        State
+      %th
+        Country
+    - icount = 0
+    - @hosts.each do |host|
+      - icount += 1
+      - if (icount%2).eql? 0 then
+        - rowstyle = 'arow'
+      - else
+        - rowstyle = 'brow'
+      %tr{ :class => rowstyle, :style => 'font-weight: bold',
+         :onmouseover => "this.className = 'mouseon'",
+        :onmouseout => "this.className = '#{rowstyle}'"}
+        %td
+          = host.ip_addr
+        %td
+          = host.clicks.count
+        %td
+          = host.impressions.count
+        %td
+          = host.os_vers
+        %td
+          = host.browser
+        %td
+          = host.state
+        %td
+          = host.country

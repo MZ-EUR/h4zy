@@ -1,0 +1,36 @@
+campaign1:
+  title: "$1k Amazon Gift Certificate"
+  ads:
+    ad1:
+      title: "Free $1000 Amazon Gift!"
+      link: "http://adserve.urgent-notification.com/splashpage.aspx?g=4725e0934e4e4787b3b45ba7f6c074ef&nm=017gjfc6uq3x&s=430001&se=06"
+      content: "Claim Your Free $1,000 Amazon Gift Certificate Now!"
+      pic: "1-1284218805.jpg"
+    ad2:
+      title: "Free $1000 Amazon Gift!"
+      link: "http://adserve.urgent-notification.com/splashpage.aspx?g=4725e0934e4e4787b3b45ba7f6c074ef&nm=017gjfc6uq3x&s=430001&se=06"
+      content: "Claim Your Free $1,000 Amazon Gift Certificate Now!"
+      pic: "1-1284304085.jpg"
+    ad3:
+      title: "Free $1000 Amazon Gift!"
+      link: "http://adserve.urgent-notification.com/splashpage.aspx?g=4725e0934e4e4787b3b45ba7f6c074ef&nm=017gjfc6uq3x&s=430001&se=06"
+      content: "Claim Your Free $1,000 Amazon Gift Certificate Now!"
+      pic: "1-1284304071.jpg"
+campaign2:
+  title: "cake poker"
+  ads:
+    ad1:
+      title: "Play Real Money Poker Now"
+      link: "http://cakepoker.com/Download/Client.ashx?AppName=CAKE&T=12420&Lang=en"
+      content: "Play for Real Money on America's Favorite Poker Network!"
+      pic: "1-1284304888.jpg"
+    ad2:
+      title: "Play Real Money Poker Now"
+      link: "http://cakepoker.com/Download/Client.ashx?AppName=CAKE&T=12420&Lang=en"
+      content: "Play for Real Money on America's Favorite Poker Network!"
+      pic: "1-1284304949.jpg"
+    ad3:
+      title: "Play Real Money Poker Now"
+      link: "http://cakepoker.com/Download/Client.ashx?AppName=CAKE&T=12420&Lang=en"
+      content: "Play for Real Money on America's Favorite Poker Network!"
+      pic: "1-1284304964.jpg"

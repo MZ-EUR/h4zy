@@ -1,0 +1,26 @@
+HKCR
+{
+	Adware.AdWareBHO.1 = s 'SysServer'
+	{
+		CLSID = s '{68FA9068-1CA5-42D9-96EC-518A4F7E3642}'
+	}
+	Adware.AdWareBHO = s 'SysServer'
+	{
+		CLSID = s '{68FA9068-1CA5-42D9-96EC-518A4F7E3642}'
+		CurVer = s 'SysServer.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {68FA9068-1CA5-42D9-96EC-518A4F7E3642} = s 'Sysserver'
+		{
+			ProgID = s 'SysServer.1'
+			VersionIndependentProgID = s 'SysServer'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{21AEC04C-640C-4262-842C-4B19D313BD9A}'
+		}
+	}
+}

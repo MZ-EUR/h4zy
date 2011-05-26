@@ -1,0 +1,38 @@
+- if @affiliates.count.eql? 0 then
+  %center
+    %h2
+      No Affiliates!?!?? You better get cracking son!
+- else
+
+  %table{ :style => "margin: 50px;" }
+    %tr
+      %th
+        Login
+      %th
+        \# of Downloads
+      %th
+        \# of Hosts
+      %th
+        Clicks
+      %th
+        Impressions
+    - icount = 0
+    - @affiliates.each do |aff|
+      - icount += 1
+      - if (icount%2).eql? 0 then
+        - rowstyle = 'arow'
+      - else
+        - rowstyle = 'brow'
+      %tr{ :class => rowstyle, :style => 'font-weight: bold',
+        :onmouseover => "this.className = 'mouseon'",
+        :onmouseout => "this.className = '#{rowstyle}'"}
+        %td
+          = aff.user.login 
+        %td
+          = aff.downloads.count
+        %td
+          = aff.hosts.count
+        %td
+          = aff.clicks.count
+        %td
+          = aff.impressions.count

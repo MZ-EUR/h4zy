@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{E5EE2AF4-36CD-4378-A5BF-E49CB8D7DF5D} = s 'UpdaterSvc'
+		'UpdaterSvc.EXE'
+		{
+			val AppID = s {E5EE2AF4-36CD-4378-A5BF-E49CB8D7DF5D}
+		}
+	}
+}

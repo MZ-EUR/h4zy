@@ -1,0 +1,48 @@
+-#  @topads = Ad.with_most_impressions
+-#  @topaffs = Affiliate.with_most_impressions
+-#  @topadv = Advertiser.with_most_impressions
+
+- if @tophosts.count.eql? 0 then
+  %center
+    %h2
+      No Hosts!?!?? You better get cracking son!
+- else
+  .nblock
+    %strong
+      Top 10 Hosts with the Most Impressions
+    %table.tblcenter
+      %tr
+        %th
+          Latest IP
+        %th
+          Impressions
+        %th
+          Operating System
+        %th
+          Browser
+        %th
+          State
+        %th
+          Country
+      - icount = 0
+      - @tophosts.each do |host|
+        - icount += 1
+        - if (icount%2).eql? 0 then
+          - rowstyle = 'arow'
+        - else
+          - rowstyle = 'brow'
+        %tr{ :class => rowstyle, :style => 'font-weight: bold',
+           :onmouseover => "this.className = 'mouseon'",
+          :onmouseout => "this.className = '#{rowstyle}'"}
+          %td
+            = host.ip_addr
+          %td
+            = host.cnt
+          %td
+            = host.os_vers
+          %td
+            = host.browser
+          %td
+            = host.state
+          %td
+            = host.country

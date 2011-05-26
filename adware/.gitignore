@@ -1,0 +1,10 @@
+*.sdf
+*.ipch
+*.suo
+*.user
+*.ncb
+*.sbr
+*.log
+bin/
+Debug/
+Release/

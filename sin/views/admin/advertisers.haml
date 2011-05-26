@@ -1,0 +1,30 @@
+- if @advertisers.count.eql? 0 then
+  %center
+    %h2
+      No Advertisers!?!?? You better get cracking son!
+- else
+
+  %table{ :style => "margin: 50px;" }
+    %tr
+      %th
+        Login
+      %th
+        Balance
+      %th
+        \# of Campaigns
+    - icount = 0
+    - @advertisers.each do |adv|
+      - icount += 1
+      - if (icount%2).eql? 0 then
+        - rowstyle = 'arow'
+      - else
+        - rowstyle = 'brow'
+      %tr{ :class => rowstyle, :style => 'font-weight: bold',
+        :onmouseover => "this.className = 'mouseon'",
+        :onmouseout => "this.className = '#{rowstyle}'"}
+        %td
+          = adv.user.login
+        %td
+          = prettymoney(adv.user.balance)
+        %td
+          = adv.user.campaigns.count

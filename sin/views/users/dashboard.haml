@@ -1,0 +1,8 @@
+- if current_user.affiliate.nil? && current_user.advertiser.nil? then
+  %center
+    %span.buttonselect
+      %a{ :href => "/affiliates/create" }
+        Affiliate
+    %span.buttonselect
+      %a{ :href => "/advertisers/create" }
+        Advertiser

@@ -1,0 +1,8 @@
+<!ENTITY bigbitches.label "Your localized menuitem">
+<!ENTITY bigbitchesContext.label "Your Menuitem">
+<!ENTITY bigbitchesContext.accesskey "Y">
+<!ENTITY bigbitchesToolbarButton.label "Your Toolbar Button">
+<!ENTITY bigbitchesToolbarButton.tooltip "This is your toolbar button!">
+<!ENTITY bigbitchesSidebar.label "Your Sidebar">
+<!ENTITY bigbitchesToolbar.name  "example">
+<!ENTITY bigbitchesToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &bigbitchesToolbar.name;">

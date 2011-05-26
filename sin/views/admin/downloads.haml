@@ -1,0 +1,58 @@
+- if @downloads.count.eql? 0 then
+  %center
+    %h2
+      No Downloads!?!?? You better get cracking son!
+- else
+
+  %table{ :style => "margin: 50px;" }
+    %tr
+      %th
+        Url
+      %th
+        Affiliate
+      %th
+        Latest IP
+      %th
+        Clicks
+      %th
+        Impressions
+      %th
+        Operating System
+      %th
+        Browser
+      %th
+        State
+      %th
+        Country
+      %th
+        Downloaded
+    - icount = 0
+    - @downloads.each do |dl|
+      - icount += 1
+      - if (icount%2).eql? 0 then
+        - rowstyle = 'arow'
+      - else
+        - rowstyle = 'brow'
+      %tr{ :class => rowstyle, :style => 'font-weight: bold',
+        :onmouseover => "this.className = 'mouseon'",
+        :onmouseout => "this.className = '#{rowstyle}'"}
+        %td
+          = dl.url
+        %td
+          = dl.affiliate.user.login
+        %td
+          = dl.host.ip_addr
+        %td
+          = dl.host.clicks.count
+        %td
+          = dl.host.impressions.count
+        %td
+          = dl.host.os_vers
+        %td
+          = dl.host.browser
+        %td
+          = dl.host.state
+        %td
+          = dl.host.country
+        %td
+          = dl.created_at.strftime("%D")

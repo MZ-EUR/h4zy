@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Adware", "Adware\Adware.vcxproj", "{BB463168-EC91-4B12-9F9A-C32F9CF0C1B9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AdwarePS", "Adware\AdwarePS.vcxproj", "{431C3D0C-CE18-4ED9-B1DF-60D11F19E736}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB463168-EC91-4B12-9F9A-C32F9CF0C1B9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BB463168-EC91-4B12-9F9A-C32F9CF0C1B9}.Debug|Win32.Build.0 = Debug|Win32
+		{BB463168-EC91-4B12-9F9A-C32F9CF0C1B9}.Release|Win32.ActiveCfg = Release|Win32
+		{BB463168-EC91-4B12-9F9A-C32F9CF0C1B9}.Release|Win32.Build.0 = Release|Win32
+		{431C3D0C-CE18-4ED9-B1DF-60D11F19E736}.Debug|Win32.ActiveCfg = Debug|Win32
+		{431C3D0C-CE18-4ED9-B1DF-60D11F19E736}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,42 @@
+%center
+  %h2
+    Payments
+
+.nblock
+  %b
+    Create a Payment for a User
+  %form{ :action => "/payments/create", :method => "post" }
+    %b
+      User:
+    %input{ :type => "text", :name => "user" }
+    %br
+    %b
+      Amount
+    %input{ :type => "text", :name => "amount" }
+    %input{ :type => "submit" }
+%br
+%br
+%table{ :style => "margin: 50px;" }
+  %tr
+    %th
+      Amount
+    %th
+      User
+    %th
+      Created On
+  - icount = 0
+  - @payments.each do |payment|
+    - icount += 1
+    - if (icount%2).eql? 0 then
+      - rowstyle = 'arow'
+    - else
+      - rowstyle = 'brow'
+    %tr{ :class => rowstyle, :style => 'font-weight: bold',
+       :onmouseover => "this.className = 'mouseon'",
+       :onmouseout => "this.className = '#{rowstyle}'"}
+      %td
+        = prettymoney(payment.amount)
+      %td
+        = payment.user.login
+      %td
+        = payment.created_at.strftime("%D")

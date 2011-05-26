@@ -1,0 +1,10 @@
+.tooltipd{
+width: 200px; color:#000;
+font:lighter 11px/1.3 Arial,sans-serif;
+text-decoration:none;text-align:center;	z-index: 10000 !important;}
+
+.tooltipd span.top{padding: 20px 8px 0;
+    position: abosulte; background: url(http://h4zy.info/images/bt2.gif) no-repeat top;}
+
+.tooltipd b.bottom{padding:3px 8px 15px;color: #548912;
+    position: abosulte; background: url(http://h4zy.info/images/bt2.gif) no-repeat bottom;}

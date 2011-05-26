@@ -1,0 +1,58 @@
+Upload New File of URLS:
+%br
+.nblock
+  %form{ :action => "/ads/newurls", :method => "post", :enctype => "multipart/form-data" }
+    %input{ :type => "hidden", :name => "cid", :value => "#{@campaign.id}" }
+    %input{ :type => "file", :name => "filename" }
+    %input{ :type => "submit" }
+%br
+or
+%br
+%i
+  (Make sure all of your urls include the 'http://' part)
+
+%br
+Paste List of New URLS:
+%br
+.nblock
+  %form{ :action => "/ads/newurls", :method => "post" }
+    %input{ :type => "hidden", :name => "cid", :value => "#{@campaign.id}" }
+    %textarea{ :name => "urllist" }
+    %input{ :type => "submit" }
+%br
+
+%table{ :style => "margin: 50px;" }
+  %tr
+    %th
+    %th
+      URL
+    %th
+      Clicks
+    %th
+      Impressions
+    %th
+      CTR
+    %th
+      Avg. CPC
+    %th
+      Cost
+  - icount = 0
+  - @campaign.urls.each do |url|
+    - icount += 1
+    - if (icount%2).eql? 0 then
+      - rowstyle = 'arow'
+    - else
+      - rowstyle = 'brow'
+    %tr{ :class => rowstyle, :style => 'font-weight: bold',
+       :onmouseover => "this.className = 'mouseon'",
+       :onmouseout => "this.className = '#{rowstyle}'"}
+      %td
+        %a{ :href => "/ads/destroyurl/#{url.id}" }
+          X
+      %td
+        = url.url
+      %td
+      %td
+      %td
+      %td
+      %td

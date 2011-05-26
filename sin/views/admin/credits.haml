@@ -1,0 +1,38 @@
+- if @credits.count.eql? 0 then
+  %center
+    %h2
+      No Credits!?!?? You better get cracking son!
+- else
+
+  %table{ :style => "margin: 50px;" }
+    %tr
+      %th
+        User
+      %th
+        Amount
+      %th
+        Hosts
+      %th
+        Paid
+      %th
+        Paid At
+    - icount = 0
+    - @credits.each do |credit|
+      - icount += 1
+      - if (icount%2).eql? 0 then
+        - rowstyle = 'arow'
+      - else
+        - rowstyle = 'brow'
+      %tr{ :class => rowstyle, :style => 'font-weight: bold',
+        :onmouseover => "this.className = 'mouseon'",
+        :onmouseout => "this.className = '#{rowstyle}'"}
+        %td
+          = user.login
+        %td
+          = prettymoney(user.amount)
+        %td
+          = user.hosts
+        %td
+          = user.paid
+        %td
+          = user.paid_at.stftime("%D")

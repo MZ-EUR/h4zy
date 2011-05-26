@@ -1,0 +1,176 @@
+require 'rubygems'
+require 'dm-core'
+require 'dm-migrations'
+require 'dm-validations'
+require 'pony'
+
+require 'db-config.rb'
+
+Dir.glob('models/*').each do |f|
+  require f
+end
+
+desc 'auto_upgrade the database'
+task :auto_upgrade do
+  DataMapper.auto_upgrade!
+end
+
+desc 'auto_migrate the database -- destructive'
+task :auto_migrate do
+  DataMapper.auto_migrate!
+  Rake::Task['fill_adtypes'].execute
+  Rake::Task['fill_systemtypes'].execute
+
+  u = User.new
+  u.login = "test"
+  u.email = "test@test.com"
+  u.password = "test"
+  u.admin = true
+  u.save
+
+  Rake::Task['fill_campaign'].execute
+end
+
+desc 'auto_create a campaign/some ads'
+task :fill_campaign do
+  user = User.first
+
+  advertiser = Advertiser.new
+  advertiser.user_id = user.id
+  advertiser.save
+
+  affiliate = Affiliate.new
+  affiliate.user_id = user.id
+  affiliate.save
+
+  @camps = YAML::load(File.open("data/campaigns.yml"))
+
+  @camps.each do |camp|
+    campaign = Campaign.new
+    campaign.adtype_id = Adtype.first(:title => "Social").id
+    campaign.user_id = user.id
+    campaign.title = camp.last["title"]
+    campaign.save
+
+    camp.last["ads"].each do |adv|
+      ad = Ad.new
+      ad.user_id = user.id
+      ad.campaign_id = campaign.id
+      ad.title = adv.last["title"]
+      ad.link = adv.last["link"]
+      ad.content = adv.last["content"]
+      ad.pic = adv.last["pic"]
+      ad.save
+    end
+
+  end
+
+end
+
+desc 'auto_create system types'
+task :fill_systemtypes do
+  ["Linux", "Windows", "OSX"].each do |os|
+    ["internet explorer", "firefox", "safari", "chrome"].each do |browser|
+      sys = System.new
+      sys.browser_name = browser
+      sys.os_name = os
+      sys.save
+    end
+  end
+end
+
+desc 'auto_create ad types'
+task :fill_adtypes do
+  ["CPV-URL", "CPV-Keyword", "CPV-RON"].each do |kw|
+    adtype = Adtype.new
+    adtype.title = kw
+    adtype.active = true
+    adtype.cpv = true
+    adtype.save
+  end
+
+  ["URL", "Keyword", "Social"].each do |kw|
+    adtype = Adtype.new
+    adtype.title = kw
+    adtype.active = true
+    adtype.save
+  end
+
+end
+
+desc 'send out daily stats email'
+task :stats_email do
+
+@stuff =<<END
+  Stats for #{Date.today.strftime("%D")}
+  -------------------------------------
+  affiliates: #{Affiliate.count}
+  hosts: #{Host.count}
+  advertisers: #{Advertiser.count}
+  users: #{User.count}
+  downloads: #{Download.count}
+END
+
+  Pony.mail(:to => 'shit@lickers.com', :subject => "", :body => @stuff, :via => :smtp, :via_options => {
+    :address              => 'smtp.gmail.com',
+    :port                 => '587',
+    :enable_starttls_auto => true,
+    :user_name            => 'balls in ',
+    :password             => 'your mouth',
+    :authentication       => :plain,
+    :domain               => "localhost.localdomain"
+  })
+end
+
+desc 'run invoices && email invoices report'
+task :run_invoices do
+
+  Advertiser.all.each do |advertiser|
+    tcost = 0
+
+    Impression.all(:advertiser_id => advertiser.id).each do |impression|
+    end
+
+    Click.all(:advertiser_id => advertiser.id).each do |click|
+      tcost += click.cost
+      click.paid = true
+      click.save
+    end
+
+    # create a invoice record
+    invoice = Invoice.new
+    invoice.user_id = advertiser.user_id
+    invoice.advertiser_id = advertiser.id
+    invoice.paid = tcost
+    invoice.paid_at = DateTime.now
+    invoice.save
+
+    # update user's balance from the invoice
+    user = User.get(affiliate.user_id)
+    user.balance -= tcost
+    user.save
+
+  end
+end
+
+desc 'run credits && email credit report'
+task :run_credits do
+  Affiliates.all.each do |affiliate|
+
+    chosts = 0
+    Host.all(:affiliate_id => affiliate.id, :credited => false).each do |host|
+      host.credited = true
+      host.save
+
+      chosts += 1
+    end
+
+    credit = Credit.new
+    credit.affiliate_id = affiliate.id
+    credit.user_id = affiliate.user_id
+    credit.hosts = chosts
+    credit.amount = chosts * 10 # 10 cents * # of hosts
+    credit.paid = true
+    credit.save
+  end
+end

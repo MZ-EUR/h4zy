@@ -1,0 +1,4 @@
+production:
+  aws_access_key: your_mom
+  aws_secret_access_key: is_a_hoe
+  bucket_base_name: social_imgs

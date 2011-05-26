@@ -1,0 +1,6 @@
+content   bigbitches                 chrome/content/
+skin      bigbitches   classic/1.0   chrome/skin/
+locale    bigbitches   en-US         chrome/locale/en-US/
+
+
+overlay   chrome://browser/content/browser.xul   chrome://bigbitches/content/ff-overlay.xul

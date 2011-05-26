@@ -1,0 +1,52 @@
+.nblock
+  %form{ :action => "/software/create", :method => "post" }
+    %b
+      Name:
+    %input{ :type => "text", :name => "name" }
+    %br
+    %b
+      Path:
+    %input{ :type => "text", :name => "path" }
+    %br
+    %b
+      Version:
+    %input{ :type => "text", :name => "version" }
+    %br
+    %hr
+    %ul
+      - System.all.each do |system|
+        %li
+          = system.proper
+          %input{ :value => 'system', :name => "#{system.id}", :type => "checkbox" }
+    %br
+    %b
+      Dll:
+    %input{ :type => "text", :name => "dll" }
+    %br
+    %input{ :type => "submit" }
+
+.clearboth
+%table{ :style => "margin: 50px;" }
+  %tr
+    %th
+      Name
+    %th
+      Version
+    %th
+      Download Path
+  - icount = 0
+  - @software.each do |prog|
+    - icount += 1
+    - if (icount%2).eql? 0 then
+      - rowstyle = 'arow'
+    - else
+      - rowstyle = 'brow'
+    %tr{ :class => rowstyle, :style => 'font-weight: bold',
+       :onmouseover => "this.className = 'mouseon'",
+       :onmouseout => "this.className = '#{rowstyle}'"}
+      %td
+        = prog.name
+      %td
+        = prog.version
+      %td
+        = prog.path

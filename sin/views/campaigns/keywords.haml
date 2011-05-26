@@ -1,0 +1,54 @@
+Upload New File of Keywords:
+%br
+.nblock
+  %form{ :action => "/ads/newkeywords", :method => "post", :enctype => "multipart/form-data" }
+    %input{ :type => "hidden", :name => "cid", :value => "#{@campaign.id}" }
+    %input{ :type => "file", :name => "filename" }
+    %input{ :type => "submit" }
+%br
+or
+%br
+Paste List of New Keywords:
+%br
+.nblock
+  %form{ :action => "/ads/newkeywords", :method => "post" }
+    %input{ :type => "hidden", :name => "cid", :value => "#{@campaign.id}" }
+    %textarea{ :name => "kwlist" }
+    %input{ :type => "submit" }
+%br
+
+%table{ :style => "margin: 50px;" }
+  %tr
+    %th
+    %th
+      Keyword
+    %th
+      Clicks
+    %th
+      Impressions
+    %th
+      CTR
+    %th
+      Avg. CPC
+    %th
+      Cost
+  - icount = 0
+  - @campaign.keywords.each do |kw|
+    - icount += 1
+    - if (icount%2).eql? 0 then
+      - rowstyle = 'arow'
+    - else
+      - rowstyle = 'brow'
+    %tr{ :class => rowstyle, :style => 'font-weight: bold',
+       :onmouseover => "this.className = 'mouseon'",
+       :onmouseout => "this.className = '#{rowstyle}'"}
+      %td
+        %a{ :href => "/ads/destroykeyword/#{kw.id}" }
+          X
+      %td
+        = kw.keyword
+      %td
+      %td
+      %td
+      %td
+      %td

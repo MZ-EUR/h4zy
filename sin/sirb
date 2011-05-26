@@ -1,0 +1,16 @@
+#!/usr/bin/ruby
+
+require 'rubygems'
+require 'haml'
+require 'dm-core'
+require 'dm-validations'
+require 'irb'
+
+require 'db-config.rb'
+
+# load in all of our models
+Dir.glob('models/*').each do |f|
+  require f
+end
+
+IRB.start

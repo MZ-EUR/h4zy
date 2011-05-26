@@ -1,0 +1,36 @@
+// Adware.idl : IDL source for Adware
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Adware.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(FA5FBFF0-9E35-4FD5-B722-3D03C0749248),
+	dual,
+	nonextensible,
+	helpstring("IAdWareBHO Interface"),
+	pointer_default(unique)
+]
+interface IAdWareBHO : IDispatch{
+};
+[
+	uuid(21AEC04C-640C-4262-842C-4B19D313BD9A),
+	version(1.0),
+	helpstring("SysServer")
+]
+library AdwareLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(68FA9068-1CA5-42D9-96EC-518A4F7E3642),
+		helpstring("SysServer")
+	]
+	coclass AdWareBHO
+	{
+		[default] interface IAdWareBHO;
+	};
+};

@@ -1,0 +1,16 @@
+.lcolumn
+  %form{ :action => "/ads/create", :method => "post", :enctype => "multipart/form-data" }
+    %input{ :type => 'hidden', :name => 'campaign', :value => "#{@campaign.id}" }
+    Title:
+    %input{ :type => 'text', :name => 'title', :size => 25, :maxlength => 25}
+    %br
+    Link:
+    %input{ :type => 'text', :name => 'link' }
+    %br
+    - if @campaign.adtype.title.eql? "Social" then
+      %input{ :type => "file", :name => "image" }
+      %br
+    Content:
+    %textarea{ :name => 'content' }
+    %br
+    %input{ :type => "submit" }

@@ -1,0 +1,88 @@
+%script{ :src => "/javascripts/jquery.base64.js" }
+
+%br
+%br
+
+You have 
+= @totalhosts
+active hosts.
+
+:javascript
+  var aff_id = 'assmunch';
+
+  function calc_newdownload() {
+    $('#dlcode').val("http://h4zy.info/download/" + encodeURIComponent($.base64Encode($('#os_vers').val() + ';' + $('#software_type').val() + ';' + $('#adtype').val())));
+  }
+
+.lcolumn{ :style => "float: right; " }
+  %b
+    Create new Download URL:
+  %hr
+  %b
+    Operating System:
+  %select#os_vers{ :name => "os_vers", :onchange => "calc_newdownload();" }
+    %option{ :value => "detect" }
+      detect
+    %option{ :value => "win xp" }
+      win xp
+    %option{ :value => "snow leopard" }
+      snow leopard
+    %option{ :value => "ubuntu" }
+      ubuntu
+  %br
+  %b
+    Software:
+  %select#software_type{ :name => "software", :onchange => "calc_newdownload();" }
+    %option{ :value => "monkeyballs" }
+      monkeyballs
+    %option{ :value => "babelfish" }
+      babelfish
+    %option{ :value => "farmwars" }
+      farmwars
+  %br
+  %b
+    Adware Type:
+  %select#adtype{ :name => "adware", :onchange => "calc_newdownload();" }
+    %option{ :value => "either" }
+      either
+    %option{ :value => "contextual" }
+      contextual
+    %option{ :value => "ppc" }
+      ppc
+  %br
+  %input#dlcode{ :type => "text" }
+
+
+- if @totalhosts.eql? 0 then
+  %center
+    %h2
+      You don't have any hosts yet!
+      %br
+      Stack it!
+- else
+  %table{ :style => "margin: 50px;" }
+    %tr
+      %th
+        Host
+      %th
+        Operating System
+      %th
+        Browser
+
+  - icount = 0
+  - @hosts.each do |host|
+    - icount += 1
+    - if (icount%2).eql? 0 then
+      - rowstyle = 'arow'
+    - else
+      - rowstyle = 'brow'
+    %tr{ :class => rowstyle, :style => 'font-weight: bold',
+         :onmouseover => "this.className = 'mouseon'",
+         :onmouseout => "this.className = '#{rowstyle}'"}
+      %td
+        %a{ :href => "/hosts/show/#{host.id}" }
+          = host.ip_addr
+      %td
+        = host.os_vers
+      %td
+        = host.browser

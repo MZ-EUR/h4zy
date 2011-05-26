@@ -1,0 +1,2 @@
+# run once a day -- email stats to everyone
+0 17 * * * cd /mnt/h4zy/sin; /usr/bin/rake production=1 stats_email > /tmp/dailyemail.stats

@@ -1,0 +1,20 @@
+// RegisterService.idl : IDL source for RegisterService.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (RegisterService.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	uuid(E90E3775-65ED-4BD1-9FE2-FE4A9B8DA6EF),
+	version(1.0),
+	helpstring("RegisterService 1.0 Type Library")
+]
+library REGISTERSERVICELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+};

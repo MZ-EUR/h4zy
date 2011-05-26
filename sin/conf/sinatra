@@ -1,0 +1,19 @@
+# sinatra start
+
+export production=1
+
+case $1 in
+start)
+  cd /mnt/h4zy/sin/; ruby web.rb >/tmp/sinatra.log 2>&1 &
+   ;;
+stop)
+  killall ruby
+   ;;
+restart)
+  pid=`ps aux | grep [w]eb.rb | awk '{print $2}'`
+  kill -9 $pid
+  wait $pid
+  cd /mnt/h4zy/sin/; ruby web.rb >/tmp/sinatra.log 2>&1 &
+   ;;
+esac
+exit 0

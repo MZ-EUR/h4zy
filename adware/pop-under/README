@@ -1,0 +1,10 @@
+software spec for this would be:
+
+  * only shows 1 ad every 2 minutes tops
+    -- should install vomba to see what their default is
+
+  * uses whatever browser is 'default'
+
+  * targets only urls (or use social engine keywords)
+
+bundle w/screensavers for now I suppose

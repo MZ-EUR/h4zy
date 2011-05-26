@@ -1,0 +1,33 @@
+%table{ :style => "margin: 50px;" }
+  %tr
+    %th
+      Login
+    %th
+      Signup Date
+    %th
+      Email
+    %th
+      IP
+    %th
+      \# of Campaigns
+  - icount = 0
+  - @users.each do |user|
+    - icount += 1
+    - if (icount%2).eql? 0 then
+      - rowstyle = 'arow'
+    - else
+      - rowstyle = 'brow'
+    %tr{ :class => rowstyle, :style => 'font-weight: bold',
+       :onmouseover => "this.className = 'mouseon'",
+       :onmouseout => "this.className = '#{rowstyle}'"}
+      %td
+        %a{ :href => "/admin/su/#{user.id}" }
+          = user.login
+      %td
+        = user.created_at.strftime("%D")
+      %td
+        = user.email
+      %td
+        = user.ip_addr
+      %td
+        = user.campaigns.count
